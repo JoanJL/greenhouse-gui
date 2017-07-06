@@ -1,29 +1,90 @@
 package com.joanjantz_lee.greenhouse;
 
+import android.graphics.Color;
+import android.widget.TextView;
+
 /**
  * Created by joanjantz-lee on 2017-06-07.
  */
 
 public class GHdata {
-        //========================
-        // Data
-        //========================
-        // Temperature
-        private double temperature;
-        private double maxTemperature;
-        private double minTemperature;
-        // Humidity
-        private double humidity;
-        private double maxHumidity;
-        private double minHumidity;
-        // Luminosity
-        private double luminosity;
-        private double maxLuminosity;
-        private double minLuminosity;
+    //========================
+    // Data
+    //========================
+    // Temperature
+    private double temperature;
+    private double maxTemperature;
+    private double minTemperature;
+    // Humidity
+    private double humidity;
+    private double maxHumidity;
+    private double minHumidity;
+    // Luminosity
+    private double luminosity;
+    private double maxLuminosity;
+    private double minLuminosity;
 
-        //========================
-        // Setters
-        //========================
+    //==============================
+    // SETTEMPCOLOR
+    //==============================
+
+    public void setTempColor(TextView tv)
+    {
+        if (getTemperature()>getMaxTemperature())
+        {
+            tv.setTextColor(Color.RED);
+        }
+        else if (getTemperature() < getMinTemperature())
+        {
+            tv.setTextColor(Color.LTGRAY);
+        }
+        else
+        {
+            tv.setTextColor(Color.BLACK);
+        }
+    }
+
+    //===============================
+    // SETHUMIDITYCOLOR
+    //===============================
+
+    public void setHumidityColor(TextView tv)
+    {
+        if (getHumidity()>getMaxHumidity())
+        {
+            tv.setTextColor(Color.RED);
+        }
+        else if (getHumidity() < getMinHumidity())
+        {
+            tv.setTextColor(Color.LTGRAY);
+        }
+        else
+        {
+            tv.setTextColor(Color.BLACK);
+        }
+    }
+    //=================================
+    // SETLUMINOSITYCOLOR
+    //==================================
+    public void setLuminosityColor(TextView tv)
+    {
+        if (getLuminosity()>getMaxLuminosity())
+        {
+            tv.setTextColor(Color.RED);
+        }
+        else if (getLuminosity() < getMinLuminosity())
+        {
+            tv.setTextColor(Color.LTGRAY);
+        }
+        else
+        {
+            tv.setTextColor(Color.BLACK);
+        }
+    }
+
+    //========================
+    // Setters
+    //========================
     public void setTemperature   (double t)   { temperature    = t;   }
     public void setHumidity      (double h)   { humidity       = h;   }
     public void setLuminosity    (double l)   { luminosity     = l;   }
@@ -52,17 +113,17 @@ public class GHdata {
     //========================
     public GHdata()
     {
-        setMaxTemperature(38);
-        setTemperature   (14.3);
-        setMinTemperature(5);
+        setMaxTemperature(100);
+        setTemperature   (50);
+        setMinTemperature(0);
 
-        setMaxHumidity   (95);
-        setHumidity      (82);
-        setMinHumidity   (40);
+        setMaxHumidity   (101);
+        setHumidity      (51);
+        setMinHumidity   (1);
 
-        setMaxLuminosity (7000);
-        setLuminosity    (8765);
-        setMinLuminosity (2000);
+        setMaxLuminosity (102);
+        setLuminosity    (52);
+        setMinLuminosity (2);
     }
 
     public GHdata(
