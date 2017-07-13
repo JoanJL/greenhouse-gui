@@ -6,77 +6,176 @@
     android:layout_height="match_parent"
     tools:context="com.joanjantz_lee.greenhouse.MainActivity">
 
-    <TextView
-        android:id="@+id/tvHumid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="43dp"
-        android:text="98%"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintLeft_toRightOf="@+id/tvTemp"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvLumin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="43dp"
-        android:text="5432 LM"
+        android:id="@+id/minText"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toRightOf="@+id/tvTemp"
+        android:text="min"
+        android:gravity="center_horizontal|bottom"
+        />
+
+    <TextView
+        android:id="@+id/maxText"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toRightOf="@+id/minText"
+        android:text="max"
+        android:gravity="center_horizontal|bottom"
+        />
+
+    <TextView
+        android:id="@+id/tempText"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:text="Temperature:"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/tvHumid"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/minText"
+        />
+
+    <TextView
+        android:id="@+id/luminText"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:text="Luminosity:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/tempText"
+        app:layout_constraintLeft_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/humidText"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:text="Humidity:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/luminText"
+        app:layout_constraintLeft_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/tvTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="43dp"
-        android:text="15 C"
+        android:layout_width="85dp"
+        android:layout_height="45dp"
+        android:text="--"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16sp"
+        android:gravity="center_vertical|left"
+        app:layout_constraintLeft_toRightOf="@+id/tempText"
+        app:layout_constraintTop_toBottomOf="@+id/minText"
+        />
+
+
+    <TextView
+        android:id="@+id/tvLumin"
+        android:layout_width="85dp"
+        android:layout_height="45dp"
+        android:text="--"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center_vertical|left"
+        app:layout_constraintLeft_toRightOf="@+id/luminText"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemp"/>
+    />
+
+    <TextView
+        android:id="@+id/tvHumid"
+        android:layout_width="85dp"
+        android:layout_height="45dp"
+        android:text="--"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center_vertical|left"
+        app:layout_constraintLeft_toRightOf="@+id/humidText"
+        app:layout_constraintTop_toBottomOf="@+id/tvLumin"
+        />
 
     <Button
-        android:id="@+id/btnHumid"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnUpdate"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="28dp"
-        android:background="@android:color/holo_blue_light"
-        android:onClick="checkHumidity"
-        android:text="Humidity"
-        app:layout_constraintLeft_toRightOf="@+id/btnTemp"
-        app:layout_constraintTop_toBottomOf="@+id/tvHumid" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHumid"
+        app:layout_constraintLeft_toRightOf="parent"
+        android:background="#496D3C"
+        android:textColor="#FFFFFF"
+        android:onClick="setValues"
 
-    <Button
-        android:id="@+id/btnLumen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="28dp"
-        android:background="@android:color/holo_orange_light"
-        android:onClick="checkLuminosity"
-        android:text="Lighting"
-        app:layout_constraintLeft_toRightOf="@+id/btnHumid"
-        app:layout_constraintTop_toBottomOf="@+id/tvLumin" />
+        android:text="Update Thresholds"
+        android:layout_marginTop="15dp"
+     />
 
-    <Button
-        android:id="@+id/btnTemp"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="28dp"
-        android:background="@android:color/holo_red_light"
-        android:onClick="checkTemp"
-        android:text="TEMP"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTemp" />
+        app:srcCompat="@drawable/logo"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpdate"
+        app:layout_constraintLeft_toRightOf="parent"
+        android:layout_marginBottom="25dp"
+        />
+
+    <EditText
+    android:id="@+id/minTempInput"
+    android:layout_width="60dp"
+    android:layout_height="45dp"
+    android:textSize="16sp"
+    app:layout_constraintLeft_toRightOf="@+id/tvTemp"
+    app:layout_constraintTop_toBottomOf="@+id/minText"/>
+
+    <EditText
+        android:id="@+id/maxTempInput"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/minTempInput"
+        app:layout_constraintTop_toBottomOf="@+id/minText"/>
+
+    <EditText
+        android:id="@+id/minLuminosityInput"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tvLumin"
+        app:layout_constraintTop_toBottomOf="@+id/minTempInput"/>
+
+    <EditText
+        android:id="@+id/maxLuminosityInput"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/minLuminosityInput"
+        app:layout_constraintTop_toBottomOf="@+id/minTempInput"/>
+
+    <EditText
+        android:id="@+id/minHumidityInput"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tvHumid"
+        app:layout_constraintTop_toBottomOf="@+id/minLuminosityInput"/>
+
+    <EditText
+        android:id="@+id/maxHumidityInput"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/minHumidityInput"
+        app:layout_constraintTop_toBottomOf="@+id/minLuminosityInput"/>
 
 </android.support.constraint.ConstraintLayout>
